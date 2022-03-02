@@ -34,6 +34,7 @@ class DataSaver {
 
   static RedisRefresher(req, res, next) {
     res.status(200).json({ message: "Data di Redis telah dibersihkan" });
+    redis.lpush;
     return redis.del("data");
   }
 }
