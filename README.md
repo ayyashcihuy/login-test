@@ -47,3 +47,19 @@ Intinya: Redis digunakan untuk mempercepat aplikasi yang mulai lambat dengan mel
 # Install Redis
 
 Note: Redis adalah aplikasi yang dibuat menggunakan bahasa pemrograman C --> See ioredis as compatible sources untuk pake redis di NodeJs
+
+# UPDATE 3 MARET 2022
+
+1. Redis - cache dan strategi cache (CrashCourse - YT)
+
+Redis - Database - Key-Value Database
+
+Redis Expiration --> Key: redis.expire(nama data, time(in sec))
+
+2. List - Array Type of Redis (data set list)
+
+key: lpush/rpush key value --> tidak bisa dipanggil dengan "get". use lrange key vIndexStart vIndexFinish
+
+deleting - key : lpop/rpop
+
+3. Sets - similar to list (its unique array)
