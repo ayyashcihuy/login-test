@@ -8,7 +8,6 @@ class DataSaver {
     let response = {};
     redis.get("data").then((value) => {
       if (value) {
-        console.log("Data ini didapatkan dari redis");
         res.status(200).json(JSON.parse(value));
       } else {
         axios({
@@ -20,14 +19,10 @@ class DataSaver {
             return redis.setex("data", 60, response);
           })
           .then(() => {
-            console.log(
-              "Data ini didapatkan dari Server dan kemudian berhasil disimpan di redis"
-            );
             res.status(200).json(response);
             redis.expire("data", 10);
           })
           .catch((err) => {
-            console.log("ERROR", err);
             res.status(404).json(err);
           });
       }
