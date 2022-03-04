@@ -16,13 +16,14 @@ class DataSaver {
         })
           .then(({ data }) => {
             response = JSON.stringify(data);
-            return redis.set("data", response);
+            redis.set("data", response);
           })
           .then(() => {
             console.log(
               "Data ini didapatkan dari Server dan kemudian berhasil disimpan di redis"
             );
             res.status(200).json(response);
+            redis.expire("data", 10);
           })
           .catch((err) => {
             console.log("ERROR", err);
@@ -30,6 +31,7 @@ class DataSaver {
           });
       }
     });
+    redis.expire("data", 10);
   }
 
   static RedisRefresher(req, res, next) {
